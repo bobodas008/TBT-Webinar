@@ -8,10 +8,10 @@ import Team from "../../assets/icons/team.svg";
 import Calender from "../../assets/icons/calender.svg";
 // import Clock from "../../assets/icons/clock.svg";
 import Coin from "../../assets/icons/Coin.svg";
-import HeroSectionImg from "../../assets/images/HeroSectionImg.png";
+// import HeroSectionImg from "../../assets/images/HeroSectionImg.png";
 import { useModal } from "../hooks/useModal";
 
-const HeroMain = ({ webinarDate, className}) => {
+const HeroMain = ({ webinarDate, className }) => {
   const { openModal } = useModal();
 
   const Button = ({ children, className = "" }) => (
@@ -39,8 +39,7 @@ const HeroMain = ({ webinarDate, className}) => {
       text: "Learn to Trade With Institutes",
       alt: "Community Icon",
     },
-    { icon: Live, text: "Live Trade Breakdown", 
-      alt: "Live Icon" },
+    { icon: Live, text: "Live Trade Breakdown", alt: "Live Icon" },
     {
       icon: Docs,
       text: 'Free Guide: "Master Risk Management"',
@@ -69,14 +68,15 @@ const HeroMain = ({ webinarDate, className}) => {
 
   return (
     <div
-      className={`relative gradient-border-container mt-6 w-full max-w-6xl ${className}`} id="hero"
+      className={`relative gradient-border-container mt-6 w-full max-w-6xl ${className}`}
+      id="hero"
     >
       <div className="gradient-border-inner bg-gradient-to-br from-[#FFD369] to-[#FFB800] shadow-[0_0_20px_#FFD369] md:shadow-[0_0_30px_#FFD369]">
         {/* --- DESKTOP LAYOUT --- */}
         <div className="hidden md:grid gap-0 items-center grid-cols-[42%_58%]">
           <div className="h-full p-2">
             <img
-              src={HeroSectionImg}
+              src="https://res.cloudinary.com/df1rboxpa/image/upload/f_auto,q_auto/v1758016002/HeroSectionImg_nyieqy.png"
               alt="Anubrata Das, Founder of The Bengal Trader"
               className="flex absolute h-[110%] object-cover -top-18 left-15"
             />
@@ -147,7 +147,7 @@ const HeroMain = ({ webinarDate, className}) => {
         <div className="md:hidden flex flex-col">
           <div className="relative h-[22rem] w-full">
             <img
-              src={HeroSectionImg}
+              src="https://res.cloudinary.com/df1rboxpa/image/upload/f_auto,q_auto/v1758016002/HeroSectionImg_nyieqy.png"
               alt="Anubrata Das"
               className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-contain"
             />
@@ -198,7 +198,7 @@ const HeroMain = ({ webinarDate, className}) => {
                 <span>Live Session on Zoom</span>
               </div>
               <div className="flex items-center gap-3">
-               <img src={Coin} alt="Coin" className="w-6 h-6" />
+                <img src={Coin} alt="Coin" className="w-6 h-6" />
                 <strike>₹999</strike> - Zero For Today Only /-
               </div>
             </div>
