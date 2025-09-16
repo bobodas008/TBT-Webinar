@@ -4,7 +4,7 @@ import CountdownTimer from "./CountdownTimer";
 import FeatureCards from "./FeatureCards";
 import HeroMain from "./HeroMain";
 import WebArrow from "../../assets/images/WebArrow.png";
-// import chartBg from "../../assets/images/heroBg.png";
+import chartBg from "../../assets/images/heroBg.png";
 import VideoShowcaseSection from "../VideoShowcase/VideoShowcaseSection";
 import { WEBINAR_DATE } from "../../webinarDate.js";
 
@@ -22,18 +22,13 @@ const HeroSection = () => {
           opacity: 0.2,
         }}
       />
-      {/* Desktop version */}
       <img
-        src="https://res.cloudinary.com/df1rboxpa/image/upload/f_auto,q_auto,w_1600/v1758017606/heroBg_jkdd3a.png"
-        alt="Chart background"
+        src={chartBg}
         className="absolute object-contain -top-4 hidden md:block"
       />
-
-      {/* Mobile version */}
       <img
-        src="https://res.cloudinary.com/df1rboxpa/image/upload/f_auto,q_auto,w_1000/v1758017606/heroBg_jkdd3a.png"
-        alt="Chart background mobile"
-        className="absolute inset-0 object-cover block md:hidden"
+        src={chartBg}
+        className="absolute inset-0 object-cover  block md:hidden"
         style={{ width: "1000px", height: "681px" }}
       />
       <div className="w-full mx-auto flex flex-col items-center gap-6">
