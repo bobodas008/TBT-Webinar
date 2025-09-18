@@ -39,7 +39,7 @@ const FeatureCards = () => {
     return (
         <div className="w-full max-w-6xl mt-6 px-4">
             {/* --- Desktop Grid --- */}
-            <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="hidden lg:grid grid-cols-1 md:grid-cols-3 gap-6">
                 {features.map((feature, index) => (
                     <div
                         key={index}
@@ -56,8 +56,8 @@ const FeatureCards = () => {
                 ))}
             </div>
 
-            {/* --- Mobile Swiper --- */}
-            <div className="md:hidden relative overflow-hidden rounded-3xl">
+            {/* --- Mobile Swiper & Tablet --- */}
+            <div className="lg:hidden relative overflow-hidden rounded-3xl w-full md:w-[70%] mx-auto">
                 <div
                     className="flex h-full transition-transform duration-700 ease-in-out"
                     style={{ transform: `translateX(-${activeIndex * 100}%)` }}
@@ -69,10 +69,10 @@ const FeatureCards = () => {
                         >
                             <img src={feature.img} alt="" className="w-10 h-10 flex-shrink-0" />
                             <div>
-                                <h3 className="font-bold text-base text-[#FFC02B] pb-1">
+                                <h3 className="font-bold text-base text-[#FFC02B] pb-1 md:text-xl">
                                     {feature.title}
                                 </h3>
-                                <p className="text-white text-xs">{feature.description}</p>
+                                <p className="text-white text-xs md:text-sm">{feature.description}</p>
                             </div>
                         </div>
                     ))}
