@@ -72,73 +72,92 @@ const HeroMain = ({ webinarDate, className }) => {
       id="hero"
     >
       <div className="gradient-border-inner bg-gradient-to-br from-[#FFD369] to-[#FFB800] shadow-[0_0_20px_#FFD369] md:shadow-[0_0_30px_#FFD369]">
-        {/* --- DESKTOP LAYOUT --- */}
-        <div className="hidden md:grid gap-0 items-center grid-cols-[42%_58%]">
+        {/* --- DESKTOP + TABLET LAYOUT (md and up) --- */}
+        <div className="hidden md:grid gap-0 items-center grid-cols-[45%_55%]">
           <div className="h-full p-2">
             <img
               src="https://res.cloudinary.com/df1rboxpa/image/upload/f_auto,q_auto/v1758016002/HeroSectionImg_nyieqy.png"
               alt="Anubrata Das, Founder of The Bengal Trader"
-              className="flex absolute h-[110%] object-cover -top-18 left-15"
+              className="flex absolute h-[110%] object-cover -top-12 left-10
+                 md:h-[100%] md:-top-2.5 md:left-3 lg:h-[110%] lg:-top-18 lg:left-15 overflow-hidden"
             />
           </div>
-          <div className="p-6 md:p-10 flex flex-col gap-6 bg-black text-white rounded-r-[75px] justify-center items-center">
-            <div
-              className="pointer-events-none absolute blur-[150px] z-1 justify-center hidden md:block -top-1"
-              style={{
-                width: "241px",
-                height: "474px",
-                background:
-                  "linear-gradient(180deg, rgba(178,178,178,1) 0%, rgba(178,178,178,0) 86%)",
-                opacity: 0.8,
-              }}
-            />
+          <div
+            className="p-4 md:p-6 lg:p-10 flex flex-col gap-4 md:gap-5 lg:gap-6 
+                  bg-black text-white rounded-r-[50px] md:rounded-r-[60px] lg:rounded-r-[75px] 
+                  justify-center items-center"
+          >
+            {/* Heading */}
             <div className="text-center relative z-10">
-              <p className="sora-regular tracking-widest text-lg font-light">
+              <p className="sora-regular tracking-widest text-sm md:text-base lg:text-lg font-light">
                 THE TRADING BLUEPRINT BY
               </p>
-              <h1 className="sorts-mill-goudy tracking-wide leading-relaxed text-5xl font-bold">
+              <h1
+                className="sorts-mill-goudy tracking-wide leading-relaxed 
+                     text-3xl md:text-4xl lg:text-5xl font-bold"
+              >
                 ANUBRATA DAS
               </h1>
-              <p className="sorts-mill-goudy tracking-wide text-lg block md:hidden">
-                Founder of The Bengal Trader
-              </p>
-              <p className="sorts-mill-goudy tracking-wider text-lg hidden md:block">
+              <p className="sorts-mill-goudy tracking-wide text-sm md:text-base lg:text-lg">
                 Founder of The Bengal Trader & TradeScribe
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4 text-white text-sm relative z-10">
+
+            {/* Features Grid */}
+            <div className="grid grid-cols-2 gap-3 md:gap-4 text-white text-xs md:text-sm lg:text-base relative z-10">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-4 bg-[#222222] px-4 py-3 rounded-2xl h-full"
+                  className="flex items-center gap-2 md:gap-3 lg:gap-4 
+                     bg-[#222222] px-3 py-2 md:px-3 md:py-2 rounded-xl md:rounded-2xl h-full"
                 >
                   <img
                     src={feature.icon}
                     alt={feature.alt}
-                    className="w-6 h-6 flex-shrink-0"
+                    className="w-4 h-4 md:w-4 md:h-4 lg:w-6 lg:h-6 flex-shrink-0"
                   />
                   <span>{feature.text}</span>
                 </div>
               ))}
             </div>
-            <div className="flex justify-center sm:gap-8 gap-4 text-white border-t border-b border-gray-600 py-4 font-semibold relative z-10">
-              <div className="flex items-center gap-3">
-                <img src={Calender} alt="Calendar" className="w-6 h-6" />
+
+            {/* Date & Session Info */}
+            <div
+              className="flex justify-center gap-3 md:gap-6 lg:gap-8 
+                    text-white border-t border-b border-gray-600 py-3 md:py-4 
+                    font-medium md:font-semibold relative z-10 text-xs md:text-sm lg:text-base"
+            >
+              <div className="flex items-center gap-2 md:gap-3">
+                <img
+                  src={Calender}
+                  alt="Calendar"
+                  className="w-5 h-5 md:w-6 md:h-6"
+                />
                 <span>{finalDisplayDate}</span>
               </div>
-              <div className="flex items-center gap-3">
-                {/* <img src={Clock} alt="Clock" className="w-6 h-6" />
-                <span>Duration: 2 hours</span> */}
-                <img src={Team} alt="Zoom" className="w-8 h-8" />
+              <div className="flex items-center gap-2 md:gap-3">
+                <img
+                  src={Team}
+                  alt="Zoom"
+                  className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8"
+                />
                 Live Session on Zoom
               </div>
             </div>
-            <div className="flex flex-col gap-3 relative z-10">
-              <p className="text-center text-white flex gap-3 text-lg font-semibold items-center justify-center">
-                <img src={Coin} alt="Coin" className="w-6 h-6" />
+
+            {/* Pricing + Button */}
+            <div className="flex flex-col gap-2 md:gap-3 relative z-10">
+              <p
+                className="text-center text-white flex gap-2 md:gap-3 
+                   text-sm md:text-base lg:text-lg font-semibold 
+                   items-center justify-center"
+              >
+                <img src={Coin} alt="Coin" className="w-5 h-5 md:w-6 md:h-6" />
                 <strike>₹999</strike> - Zero For Today Only /-
               </p>
-              <Button>Save My Seat</Button>
+              <Button className="text-sm md:text-base lg:text-lg py-3 md:py-4">
+                Save My Seat
+              </Button>
             </div>
           </div>
         </div>
