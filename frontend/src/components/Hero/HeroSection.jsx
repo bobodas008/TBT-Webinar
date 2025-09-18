@@ -37,7 +37,7 @@ const HeroSection = () => {
         <img
           src={WebArrow}
           alt=""
-          className="absolute w-18 h-16 rotate-x-180 -rotate-20 invert-1 top-[14%] left-[9%] md:-rotate-10 md:w-18 md:h-16 md:left-[37%] md:top-68"
+          className="absolute w-18 h-16 rotate-x-180 -rotate-20 invert-1 top-[14%] left-[9%] md:-rotate-10 md:w-18 md:h-16 md:left-[20%] md:top-90 lg:-rotate-10 lg:w-18 lg:h-16 lg:left-[37%] lg:top-68"
         />
         <CountdownTimer webinarDate={WEBINAR_DATE} />
         <FeatureCards />
