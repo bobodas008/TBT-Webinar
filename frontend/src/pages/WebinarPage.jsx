@@ -65,7 +65,7 @@ function WebinarPage() {
       />
 
       {/* Left Side Ellipse Shape */}
-      <div className="absolute -left-[10%] top-[35%] hidden md:block -z-5">
+      <div className="absolute -left-[10%] top-[35%] hidden lg:block -z-5">
         <img
           src={EllipseIcon1}
           style={{
@@ -125,7 +125,7 @@ function WebinarPage() {
       <FAQSection />
       <CTASection />
       {/* Left Side Ellipse Shape */}
-      <div className="absolute -left-[25%] top-[90%] -z-100 hidden md:block">
+      <div className="absolute -left-[25%] top-[90%] -z-100 hidden lg:block">
         <img
           src={EllipseIcon1}
           style={{
