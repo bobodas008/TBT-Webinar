@@ -20,25 +20,73 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 // Create order (store registration in MongoDB, no orderId)
+// router.post("/create-order", async (req, res) => {
+//   const { name, email, contact } = req.body;
+
+//   if (!name || !email || !contact) {
+//     return res.status(400).json({ success: false, message: "All fields are required" });
+//   }
+
+//   try {
+//     // Check for existing user
+//     const existing = await User.findOne({ $or: [{ email }, { contact }] });
+//     if (existing) {
+//       return res.status(400).json({ success: false, message: "User already registered with this email or contact." });
+//     }
+
+//     // Store in MongoDB
+//     const user = new User({ name, email, contact });
+//     await user.save();
+
+//     // Return success
+//     res.json({ success: true, user: { name, email, contact } });
+//   } catch (error) {
+//     console.error("MongoDB error:", error);
+//     res.status(500).json({ success: false, message: "Failed to register" });
+//   }
+// });
+
+// Create order (store registration in MongoDB + send to Pabbly)
 router.post("/create-order", async (req, res) => {
   const { name, email, contact } = req.body;
 
   if (!name || !email || !contact) {
-    return res.status(400).json({ success: false, message: "All fields are required" });
+    return res
+      .status(400)
+      .json({ success: false, message: "All fields are required" });
   }
 
   try {
     // Check for existing user
     const existing = await User.findOne({ $or: [{ email }, { contact }] });
     if (existing) {
-      return res.status(400).json({ success: false, message: "User already registered with this email or contact." });
+      return res.status(400).json({
+        success: false,
+        message: "User already registered with this email or contact.",
+      });
     }
 
-    // Store in MongoDB
+    // ✅ Store in MongoDB
     const user = new User({ name, email, contact });
     await user.save();
 
-    // Return success
+    // ✅ Send the same data to Pabbly webhook
+    fetch(
+      process.env.PABBLY_FORM_URL,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          contact,
+        }),
+      }
+    )
+      .then(() => console.log("✅ Data sent to Pabbly successfully"))
+      .catch((err) => console.error("❌ Failed to send data to Pabbly:", err));
+
+    // ✅ Send success response back to frontend
     res.json({ success: true, user: { name, email, contact } });
   } catch (error) {
     console.error("MongoDB error:", error);
