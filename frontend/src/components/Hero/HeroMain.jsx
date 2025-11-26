@@ -14,17 +14,32 @@ import { useModal } from "../hooks/useModal";
 const HeroMain = ({ webinarDate, className }) => {
   const { openModal } = useModal();
 
-  const Button = ({ children, className = "" }) => (
-    <button
-      className={`group relative w-full py-4 px-8 rounded-full bg-[#FFC02B] text-[#212121] font-black text-lg overflow-hidden transition-all duration-300 ${className}`}
-      onClick={openModal}
-    >
-      <span className="absolute top-0 left-0 h-full w-0 rounded-2xl bg-[#ffffff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
-      <span className="relative z-10 flex justify-center items-center gap-2 group-hover:text-[#000000] transition-colors duration-300">
-        {children} <FaChevronRight />
-      </span>
-    </button>
-  );
+  const Button = ({ children, className = "" }) => {
+    const handleClick = () => {
+      // Fire FB Lead event when user clicks "Save My Seat"
+      if (window.fbq) {
+        window.fbq("track", "Lead");
+        console.log("FB Pixel: Lead event triggered");
+      } else {
+        console.warn("FB Pixel not loaded yet");
+      }
+
+      // Then open your registration modal
+      openModal();
+    };
+
+    return (
+      <button
+        className={`group relative w-full py-4 px-8 rounded-full bg-[#FFC02B] text-[#212121] font-black text-lg overflow-hidden transition-all duration-300 ${className}`}
+        onClick={handleClick}
+      >
+        <span className="absolute top-0 left-0 h-full w-0 rounded-2xl bg-[#ffffff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+        <span className="relative z-10 flex justify-center items-center gap-2 group-hover:text-[#000000] transition-colors duration-300">
+          {children} <FaChevronRight />
+        </span>
+      </button>
+    );
+  };
 
   const [activeIndex, setActiveIndex] = useState(0);
 
